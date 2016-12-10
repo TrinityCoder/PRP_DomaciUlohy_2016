@@ -87,7 +87,7 @@ void init_primes() {
 /*
  * void factorize(char* num)
  *
- * Rozlozi cislo reprezentovane textovym retezcem 'str'
+ * Rozlozi cislo reprezentovane textovym retezcem 'num'
  * na soucin prvocinitelu.
 */
 void factorize(char* num) {
