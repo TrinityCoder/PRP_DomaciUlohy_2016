@@ -21,6 +21,9 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 # Pridame -pedantic a -Wall compilation flags.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall -Werror")
 
+# Nastavime, aby se binarky vsech uloh vytvorily v podslozce 'bin'.
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+
 # Pridame podadresare s jednotlivymi ulohami
 # (kazda uloha je vlastne samostatny projekt a ma ve svem adresari
 # "upresnujici" CMakeLists.txt).
@@ -38,11 +41,11 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 		"Defaultne chceme instalovat lokalne..." FORCE)
 endif()
 
-
 message("     Projekt:  ${PROJECT_NAME}")
 message("     Autor:    Miroslav Mares (https://github.com/TrinityCoder)")
 message("     Verze:    ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
-message("     Popis:    Jedna se o implementaci vsech domacich uloh z predmetu Proceduralni programovani,")
+message("     Popis:    Implementace domacich uloh z predmetu Proceduralni programovani,")
 message("               ktery byl vyucovan v prvnim semestru ak. roku 2016/2017 na FELu CVUT.")
 message("")
 message("     CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
+message("     CMAKE_RUNTIME_OUTPUT_DIRECTORY = ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
