@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 4.0 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 5.0 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)
@@ -33,6 +33,7 @@ add_subdirectory(HW02)
 add_subdirectory(HW03)
 add_subdirectory(HW04)
 add_subdirectory(HW04b)
+add_subdirectory(HW05)
 
 # Nastavime defaultni install prefix na slozku obsahujici korenovy
 # CMakeLists.txt...
