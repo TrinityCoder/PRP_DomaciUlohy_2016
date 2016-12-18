@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 5.0 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 6.0 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)
@@ -24,6 +24,10 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall -Werror")
 # Nastavime, aby se binarky vsech uloh vytvorily v podslozce 'bin'.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
+if(DEFINED MIREK_DBG)
+	add_definitions(-DMIREK_DBG=${MIREK_DBG})
+endif()
+
 # Pridame podadresare s jednotlivymi ulohami
 # (kazda uloha je vlastne samostatny projekt a ma ve svem adresari
 # "upresnujici" CMakeLists.txt).
@@ -34,6 +38,7 @@ add_subdirectory(HW03)
 add_subdirectory(HW04)
 add_subdirectory(HW04b)
 add_subdirectory(HW05)
+add_subdirectory(HW06)
 
 # Nastavime defaultni install prefix na slozku obsahujici korenovy
 # CMakeLists.txt...
@@ -50,3 +55,8 @@ message("               ktery byl vyucovan v prvnim semestru ak. roku 2016/2017 
 message("")
 message("     CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 message("     CMAKE_RUNTIME_OUTPUT_DIRECTORY = ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+if(DEFINED MIREK_DBG)
+message("     Passing -DMIREK_DBG=${MIREK_DBG} to preprocessor (applies for all projects) ... TRUE.")
+else()
+message("     Passing -DMIREK_DBG to preprocessor (applies for all projects) ... FALSE.")
+endif()
