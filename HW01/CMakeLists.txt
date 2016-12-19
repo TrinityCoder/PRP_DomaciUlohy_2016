@@ -6,4 +6,5 @@ add_executable(HW01 main.c)
 install(TARGETS HW01
     RUNTIME DESTINATION bin
     LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib/static)
+    ARCHIVE DESTINATION lib/static
+	)
