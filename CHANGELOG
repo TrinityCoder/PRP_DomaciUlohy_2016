@@ -1,3 +1,7 @@
+=================================== Commit 11 (20. 12. 2016) ===================================
+
+Přidána úloha HW07.
+
 =================================== Commit 10 (20. 12. 2016) ===================================
 
 Změna adresářové struktury v CMakeLists.txt, díky které se binárky zkompilují přimo do složky
