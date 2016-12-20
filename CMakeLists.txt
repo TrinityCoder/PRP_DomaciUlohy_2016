@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 6.0 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 7.0 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)
@@ -22,21 +22,23 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall -Werror")
 
 # Nastavime, aby se binarky vsech uloh vytvorily v podslozce 'bin'.
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
 # Nakopirujeme vsechny testovaci soubory vsech uloh dohromady do slozky bin/tests.
-file(GLOB_RECURSE TEST_FILES_HW02 HW02/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW03 HW03/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW04 HW04/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW02 HW02_src/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW03 HW03_src/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW04 HW04_src/tests/*)
 	# HW04b testy chybi (aspon prozatim)
-file(GLOB_RECURSE TEST_FILES_HW05 HW05/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW06 HW06/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW05 HW05_src/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW06 HW06_src/tests/*)
+file(GLOB_RECURSE TEST_FILES_HW07 HW07_src/tests/*)
 
 file(COPY ${TEST_FILES_HW02} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW02)
 file(COPY ${TEST_FILES_HW03} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW03)
 file(COPY ${TEST_FILES_HW04} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW04)
 file(COPY ${TEST_FILES_HW05} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW05)
 file(COPY ${TEST_FILES_HW06} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW06)
+file(COPY ${TEST_FILES_HW07} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW07)
 
 
 if(DEFINED MIREK_DBG)
@@ -53,14 +55,15 @@ endif()
 # Pridame podadresare s jednotlivymi ulohami
 # (kazda uloha je vlastne samostatny projekt a ma ve svem adresari
 # "upresnujici" CMakeLists.txt).
-add_subdirectory(HW00)
-add_subdirectory(HW01)
-add_subdirectory(HW02)
-add_subdirectory(HW03)
-add_subdirectory(HW04)
-add_subdirectory(HW04b)
-add_subdirectory(HW05)
-add_subdirectory(HW06)
+add_subdirectory(HW00_src)
+add_subdirectory(HW01_src)
+add_subdirectory(HW02_src)
+add_subdirectory(HW03_src)
+add_subdirectory(HW04_src)
+add_subdirectory(HW04b_src)
+add_subdirectory(HW05_src)
+add_subdirectory(HW06_src)
+add_subdirectory(HW07_src)
 
 message("     Projekt:  ${PROJECT_NAME}")
 message("     Autor:    Miroslav Mares (https://github.com/TrinityCoder)")
@@ -70,6 +73,7 @@ message("               ktery byl vyucovan v prvnim semestru ak. roku 2016/2017 
 message("")
 message("     CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 message("     CMAKE_RUNTIME_OUTPUT_DIRECTORY = ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+message("     EXECUTABLE_OUTPUT_PATH = ${EXECUTABLE_OUTPUT_PATH}")
 if(DEFINED MIREK_DBG)
 message("     Passing -DMIREK_DBG=${MIREK_DBG} to preprocessor (applies for all projects) ... TRUE.")
 else()

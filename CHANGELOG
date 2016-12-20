@@ -1,3 +1,9 @@
+=================================== Commit 10 (20. 12. 2016) ===================================
+
+Změna adresářové struktury v CMakeLists.txt, díky které se binárky zkompilují přimo do složky
+build, tj. nebude potřeba se přesouvat ze složky build do podsložky bin. Zároveň
+jsem musel přejmenovat adresáře se zdrojovými soubory úloh, takže jsem přidal příponu _src.
+
 =================================== Commit 8 (19. 12. 2016) ===================================
 
 Přidány oficiální testovací vstupy pro HW02 až HW06 včetně (HW04b nemá ofic. testy).

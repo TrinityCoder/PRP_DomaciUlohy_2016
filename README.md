@@ -17,16 +17,16 @@ cmake ..
 make
 ```
 
-Nyní se binárky všech úloh nacházejí v podadresáři `bin`, tj. chcete-li např. spustit
+Binárky všech úloh se nacházejí v aktuálním adresáři, tj. chcete-li např. spustit
 úlohu HW00, můžete tak učinit příkazem
 
 ```bash
-me@linux:~/PRP_DomaciUlohy_2016/build$ ./bin/HW00
+me@linux:~/PRP_DomaciUlohy_2016/build$ ./HW00
 Hello, PRP!
 ```
 
-Testy se nachází v adresáři `bin/tests/<uloha>`, tj. např. pro HW06 lze testovací vstupy
-najít v adresáři `bin/tests/HW06`. Zde jsou již dobrovolné a povinné testy dohromady
+Testy se nachází v adresáři `tests/<uloha>`, tj. např. pro HW06 lze testovací vstupy
+najít v adresáři `tests/HW06`. Zde jsou již dobrovolné a povinné testy dohromady
 (rozlišit se dají pomocí písmena 'o' nebo 'm' v názvu jako 'optional' a 'mandatory'),
 původní adresářová struktura testů je zachována v podsložce `tests` složek obsahujících
 zdrojové kódy jednotlivých úloh.
