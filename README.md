@@ -13,8 +13,7 @@ Standardní způsob kompilace vypadá asi takto:
 ```bash
 git clone https://github.com/TrinityCoder/PRP_DomaciUlohy_2016.git
 cd PRP_DomaciUlohy_2016 && mkdir build && cd build
-cmake ..
-make
+cmake .. && make
 ```
 
 Binárky všech úloh se nacházejí v aktuálním adresáři, tj. chcete-li např. spustit
