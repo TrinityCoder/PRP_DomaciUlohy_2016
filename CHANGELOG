@@ -1,3 +1,35 @@
+=================================== Commit 13 (30. 12. 2016) ===================================
+
+Pro HW04 jsem vytvořil testovací skript tester_HW04.py, naleznete jej ve složce HW04_src.
+Zatím umí pouze stdout a stderr, do budoucna plánuju ho hodně zobecnit a přidat podporu
+pro návratové hodnoty a valgrind.
+
+Skript se s příkazem 'make' zkopíruje do složky build/, takže si jej můžete vyzkoušet
+např. takto:
+
+mkdir build && cd build && cmake .. && make
+./tester_HW04.py ./HW04 tests/HW04/
+
+Ukázkový výstup:
+
+--------  [PYTHON VERSION INFO] --------
+3.5.2+ (default, Dec 13 2016, 14:16:35)
+[GCC 6.2.1 20161124]
+
+--------  [DUMP OF PASSED COMMAND-LINE ARGS]  --------
+{
+   [0]  =>  "./tester_HW04.py"
+   [1]  =>  "./HW04"
+   [2]  =>  "tests/HW04/"
+}
+
+[TEST][pub01.in]:  ---  [STDOUT]: OK  ---  [STDERR]: OK  ---
+[TEST][pub03.in]:  ---  [STDOUT]: OK  ---  [STDERR]: FAILED!!  ---
+[TEST][pub04.in]:  ---  [STDOUT]: OK  ---  [STDERR]: OK  ---
+[TEST][pub02.in]:  ---  [STDOUT]: OK  ---  [STDERR]: OK  ---
+
+Čímž jsem zároveň zjistil, že HW04 není tak perfektní jak vypadal :-) brzy bude opraveno.
+
 =================================== Commit 11 (20. 12. 2016) ===================================
 
 Přidána úloha HW07.
