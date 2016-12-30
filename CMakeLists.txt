@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 7.0 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 7.1 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)
@@ -30,6 +30,7 @@ file(GLOB_RECURSE TEST_FILES_HW03 HW03_src/tests/*)
 file(GLOB_RECURSE TEST_FILES_HW04 HW04_src/tests/*)
 	# HW04b testy chybi (aspon prozatim)
 file(GLOB_RECURSE TEST_FILES_HW05 HW05_src/tests/*)
+#file(GLOB_RECURSE TEST_FILES_HW05b HW05b_src/tests/*)
 file(GLOB_RECURSE TEST_FILES_HW06 HW06_src/tests/*)
 file(GLOB_RECURSE TEST_FILES_HW07 HW07_src/tests/*)
 
@@ -37,6 +38,7 @@ file(COPY ${TEST_FILES_HW02} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests
 file(COPY ${TEST_FILES_HW03} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW03)
 file(COPY ${TEST_FILES_HW04} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW04)
 file(COPY ${TEST_FILES_HW05} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW05)
+#file(COPY ${TEST_FILES_HW05b} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW05b)
 file(COPY ${TEST_FILES_HW06} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW06)
 file(COPY ${TEST_FILES_HW07} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW07)
 
@@ -62,6 +64,7 @@ add_subdirectory(HW03_src)
 add_subdirectory(HW04_src)
 add_subdirectory(HW04b_src)
 add_subdirectory(HW05_src)
+#add_subdirectory(HW05b_src)
 add_subdirectory(HW06_src)
 add_subdirectory(HW07_src)
 

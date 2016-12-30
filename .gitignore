@@ -1,2 +1,3 @@
-build/*
+build/
 test_purposes/
+HW05b_src/
