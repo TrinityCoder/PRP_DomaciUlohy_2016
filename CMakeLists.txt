@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 7.1 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 7.2 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)
@@ -18,39 +18,17 @@ set(CMAKE_C_STANDARD 99)
 # ... a tento standard vynutime.
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Pridame -pedantic a -Wall compilation flags.
+# Pridame -pedantic, -Wall a -Werror compilation flags.
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic -Wall -Werror")
 
 # Nastavime, aby se binarky vsech uloh vytvorily v podslozce 'bin'.
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
-# Nakopirujeme vsechny testovaci soubory vsech uloh dohromady do slozky bin/tests.
-file(GLOB_RECURSE TEST_FILES_HW02 HW02_src/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW03 HW03_src/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW04 HW04_src/tests/*)
-	# HW04b testy chybi (aspon prozatim)
-file(GLOB_RECURSE TEST_FILES_HW05 HW05_src/tests/*)
-#file(GLOB_RECURSE TEST_FILES_HW05b HW05b_src/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW06 HW06_src/tests/*)
-file(GLOB_RECURSE TEST_FILES_HW07 HW07_src/tests/*)
-
-file(COPY ${TEST_FILES_HW02} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW02)
-file(COPY ${TEST_FILES_HW03} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW03)
-file(COPY ${TEST_FILES_HW04} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW04)
-file(COPY ${TEST_FILES_HW05} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW05)
-#file(COPY ${TEST_FILES_HW05b} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW05b)
-file(COPY ${TEST_FILES_HW06} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW06)
-file(COPY ${TEST_FILES_HW07} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/tests/HW07)
-
-file(COPY HW04_src/tester_HW04.py DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
-
-if(DEFINED MIREK_DBG)
-	add_definitions(-DMIREK_DBG=${MIREK_DBG})
-endif()
-
-# Nastavime defaultni install prefix na slozku obsahujici korenovy
-# CMakeLists.txt...
+# Pro pripad, kdy by nekdo omylem spustil "make install", tak aby mu to nezaplavilo
+# /usr/local/... slozky, tak se to nainstaluje do slozky install_dir, ktera se vytvori
+# v korenovem adresari, kde je naklonovan tento github projekt - pokud by
+# z nejakeho duvodu to nekdo fakt chtel instalovat, musi pri volani cmake
+# specifikovat -DCMAKE_INSTALL_PREFIX.
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 	set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/install_dir" CACHE PATH
 		"Defaultne chceme instalovat lokalne..." FORCE)
@@ -66,9 +44,12 @@ add_subdirectory(HW03_src)
 add_subdirectory(HW04_src)
 add_subdirectory(HW04b_src)
 add_subdirectory(HW05_src)
-#add_subdirectory(HW05b_src)
+#add_subdirectory(HW05b_src)  - neimplementovano (a asi ani nebude)
 add_subdirectory(HW06_src)
 add_subdirectory(HW07_src)
+
+# (Kopirovani testovaci souboru pro kazdou ulohu je naskriptovane
+# v CMakeFile.txt souborech v techto slozkach.)
 
 message("     Projekt:  ${PROJECT_NAME}")
 message("     Autor:    Miroslav Mares (https://github.com/TrinityCoder)")
@@ -78,9 +59,3 @@ message("               ktery byl vyucovan v prvnim semestru ak. roku 2016/2017 
 message("")
 message("     CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 message("     CMAKE_RUNTIME_OUTPUT_DIRECTORY = ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-message("     EXECUTABLE_OUTPUT_PATH = ${EXECUTABLE_OUTPUT_PATH}")
-if(DEFINED MIREK_DBG)
-message("     Passing -DMIREK_DBG=${MIREK_DBG} to preprocessor (applies for all projects) ... TRUE.")
-else()
-message("     Passing -DMIREK_DBG to preprocessor (applies for all projects) ... FALSE.")
-endif()

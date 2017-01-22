@@ -5,11 +5,9 @@
 #include <assert.h>
 #include <ctype.h>
 
-#if MIREK_DBG == 1
-#define DPRINTF(...) fprintf(stderr, __VA_ARGS__)
-#else
+// Pro aktivati DPRINTF debugovaci funkce prohodte komentare na nasledujicich dvou radcich:
+// #define DPRINTF(...) fprintf(stderr, __VA_ARGS__)
 #define DPRINTF(...) do { } while(0);
-#endif
 
 static const char* PRP_OPTIONAL = "-prp-optional";
 

@@ -1,3 +1,10 @@
+=================================== Commit 16 (23.  1. 2017) ===================================
+
+Testovac Python skript jsem nakonec odstranil, rozhodl jsem se jej z projektu vynechat.
+
+Zároveň jsem upravil umístění, kam se zkopírují testovací vstupy - platné aktuální
+informace jsou v souboru README.md.
+
 =================================== Commit 13 (30. 12. 2016) ===================================
 
 Pro HW04 jsem vytvořil testovací skript tester_HW04.py, naleznete jej ve složce HW04_src.
