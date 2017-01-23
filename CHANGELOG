@@ -1,3 +1,8 @@
+=================================== Commit 18 (23.  1. 2017) ===================================
+
+Přidána úloha HW08. Implementována je POUZE povinná část, nikoli volitelná
+(tj. fronta se neumí automaticky zmenšovat - pouze zvětšovat).
+
 =================================== Commit 16 (23.  1. 2017) ===================================
 
 Testovac Python skript jsem nakonec odstranil, rozhodl jsem se jej z projektu vynechat.

@@ -47,6 +47,7 @@ add_subdirectory(HW05_src)
 #add_subdirectory(HW05b_src)  - neimplementovano (a asi ani nebude)
 add_subdirectory(HW06_src)
 add_subdirectory(HW07_src)
+add_subdirectory(HW08_src)
 
 # (Kopirovani testovaci souboru pro kazdou ulohu je naskriptovane
 # v CMakeFile.txt souborech v techto slozkach.)
