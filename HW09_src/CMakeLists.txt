@@ -21,9 +21,11 @@ add_custom_command(TARGET HW09_libgraph PRE_BUILD
 # tj. pripravi ZIP soubor k uploadu do hodnoticiho systemu.
 add_custom_target(zip_HW09
      COMMAND ${CMAKE_COMMAND} -E tar "cfv" "HW09_upload.zip" --format=zip
-     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-     SOURCES   "${CMAKE_CURRENT_SOURCE_DIR}/graph.c"
+               "${CMAKE_CURRENT_SOURCE_DIR}/graph.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/graph.h"
+     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/graph.c"
+             "${CMAKE_CURRENT_SOURCE_DIR}/graph.h"
 )
 
 # Specifikujeme, co a kam se bude kopirovat prikazem "make install".

@@ -12,9 +12,11 @@ add_custom_command(TARGET HW08 PRE_BUILD
 # tj. pripravi ZIP soubor k uploadu do hodnoticiho systemu.
 add_custom_target(zip_HW08
      COMMAND ${CMAKE_COMMAND} -E tar "cfv" "HW08_upload.zip" --format=zip
-     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-     SOURCES   "${CMAKE_CURRENT_SOURCE_DIR}/queue.c"
+               "${CMAKE_CURRENT_SOURCE_DIR}/queue.c"
                "${CMAKE_CURRENT_SOURCE_DIR}/queue.h"
+     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+     DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/queue.c"
+             "${CMAKE_CURRENT_SOURCE_DIR}/queue.h"
 )
 
 # Specifikujeme, co a kam se bude kopirovat prikazem "make install".
