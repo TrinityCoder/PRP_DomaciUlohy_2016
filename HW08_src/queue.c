@@ -47,6 +47,28 @@ void* pop_from_queue(queue_t *queue) {
      void* ret = queue->m_arr[queue->m_oldest++];  // Ukazatel, ktery budeme vracet.
      queue->m_oldest %= queue->m_capacity;   // Obrana proti index-out-of-bounds.
      queue->m_size -= 1;
+     // Implementace VOLITELNE CASTI - pokud je nyni obsazeno mene nez 1/3 mist
+     // ve fronte, zmensime jeji kapacitu na 1/3.
+     if(queue->m_size < queue->m_capacity / 3) {
+          // 1) Alokujeme novy prostor o tretinove kapacite pro m_arr:
+          void** new_arr = malloc(sizeof(void*) * (queue->m_capacity / 3));
+          // 2) Do noveho prostoru prekopirujeme prvky m_arr.
+          // POZOR - asi jedina vec poradne k zamysleni.
+          // Pri kopirovani prvku je rovnou zarovname, aby fronta zacinala
+          // na indexu 0, tj. nejstarsi prvek byl na indexu 0, druhy nejstarsi
+          // na 1, atd...
+          if(new_arr != NULL) {
+               for(int i = 0; i < queue->m_size; ++i) {
+                    new_arr[i] = queue->m_arr[(queue->m_oldest + i) % queue->m_capacity];
+               }
+               // Mame zkopirovano, uvolnime stare pole a je hotovo.
+               free(queue->m_arr);
+               queue->m_arr = new_arr;
+               queue->m_capacity /= 3;
+               queue->m_oldest = 0;
+               queue->m_newest = queue->m_size;
+          }
+     }
      return ret;
 }
 
