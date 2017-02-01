@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.6.1)
 # ktere soucasny commit obsahuje, tj. napr. verze 4.0.0 obsahuje
 # ulohy HW00 az HW04b (vcetne).
 # (Posledni uloha za semestr se jmenuje HW10).
-project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 9.0 LANGUAGES C)
+project(CVUT_FEL_PRP_DomaciUlohy_2016 VERSION 10.0 LANGUAGES C)
 
 # Standardne vse kompilujeme s debugovacimi symboly.
 set(CMAKE_BUILD_TYPE Debug)

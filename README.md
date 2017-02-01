@@ -26,7 +26,7 @@ me@linux:~/PRP_DomaciUlohy_2016/build$
 ```
 
 Testy se nachází v adresáři `tests_<uloha>/`, tj. např. pro HW06 lze testovací vstupy
-najít v adresáři `tests_HW06`. 
+najít v adresáři `tests_HW06`.
 
 ### Licence
 
@@ -35,8 +35,8 @@ je čistě na zodpovědnosti toho, kdo je použít chce.
 
 ### Co bude dál?
 
-V současnosti pracuji na dodělání dalších úloh; dávat je sem budu trochu se zpožděním
-oproti termínům v odevzdávacím systému. Máte-li jakýkoli nápad na vylepšení/pull request,
-budu se těšit!
+V současnosti jsem již veškeré práci na tomto repozitáři ukončil. Pokud zde ještě
+přibude nějaký commit, tak spíš už jen detailního rázu. Všechny úlohy
+(kromě bonusové úlohy HW05b) byly implementovány.
 
 -- *Miroslav Mareš* (a. k. a. *TrinityCoder*)
