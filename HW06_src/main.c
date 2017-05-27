@@ -206,7 +206,7 @@ size_t levenshtein_distance(const dynstr_t* const first, const dynstr_t* const s
 			vec2[j + 1] = minimum_of_triple(vec2[j] + 1,
 								vec1[j + 1] + 1, vec1[j] + cost);
 		}
-		for(size_t j = 0; j < second->used; ++j) {
+		for(size_t j = 0; j <= second->used; ++j) {
 			vec1[j] = vec2[j];
 		}
 	}
