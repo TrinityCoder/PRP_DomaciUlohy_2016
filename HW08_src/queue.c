@@ -33,6 +33,8 @@ bool push_to_queue(queue_t *queue, void *data) {
                return false;  // Realokace selhala.
           queue->m_arr = new_array;
           queue->m_capacity *= 2;
+          // Zde musíme zabránit bugům typu "5 6 7 1 2 3 4 - - - - - - -"
+          // TODO: Dodělat!
      }
      queue->m_newest %= queue->m_capacity;   // Osetreni index-out-of-bounds...
      // Pridame data do fronty.
