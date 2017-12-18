@@ -28,13 +28,21 @@ void delete_queue(queue_t *queue) {
 bool push_to_queue(queue_t *queue, void *data) {
      if(queue->m_size == queue->m_capacity) {
           // Fronta je zaplnena - zvetsime ji na dvojnasobek.
-          void** new_array = realloc(queue->m_arr, sizeof(void*) * queue->m_capacity * 2);
-          if(new_array == NULL)
-               return false;  // Realokace selhala.
-          queue->m_arr = new_array;
+          void** new_buffer = malloc(sizeof(void*) * queue->m_capacity * 2);
+          if (new_buffer == NULL) {
+            return false;
+          }
+          // Prekopirujeme data z queue->m_arr do new_buffer (stejne jako v pop_from_queue(),
+          // i zde vyuzijeme situace a frontu "zarotujeme" tak, aby na zacatku byl nejstarsi
+          // prvek a na nejvyssim indexu nejmladsi)
+          for (int i = 0; i < queue->m_size; ++i) {
+            new_buffer[i] = get_from_queue(queue, i);
+          }
+          free(queue->m_arr);
+          queue->m_arr = new_buffer;
           queue->m_capacity *= 2;
-          // Zde musíme zabránit bugům typu "5 6 7 1 2 3 4 - - - - - - -"
-          // TODO: Dodělat!
+          queue->m_oldest = 0;
+          queue->m_newest = queue->m_size;
      }
      queue->m_newest %= queue->m_capacity;   // Osetreni index-out-of-bounds...
      // Pridame data do fronty.
